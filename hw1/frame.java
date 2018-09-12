@@ -1,3 +1,7 @@
+import java.util.*;
+import java.io.*;
+import java.lang.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,11 +17,13 @@ public class frame extends JFrame
 	private JPanel panel = new JPanel();
 	private int window_height;
 	private int window_width;
+	private int click_counter;
 
 	public frame(String window_name, int height, int width)
 	{
 		window_height = height;
 		window_width = width;
+		click_counter = 0;
 		setTitle(window_name);
 		setSize(height, width);
 		setLocationRelativeTo(null);
@@ -52,22 +58,30 @@ public class frame extends JFrame
 		panel.add(button);
 	}
 
-	public void add_switchable_button(String button_text, String print_out, int x, int y)
+	public void add_switchable_button(String[] button_text, String initial_text, int x, int y)
 	{
-		JButton button = new JButton(button_text);
+		JButton button = new JButton(initial_text);
 		button.setBounds(x, y, 150, 30);
+		int l = button_text.length;
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				System.out.println();
+				click_counter++;
+				button.setText(button_text[click_counter % l]);
+				System.out.println(button_text[click_counter % l]);
 			}
 		});
 		panel.add(button);
 	}
 
-	public void add_checkbox(String button_text, int x, int y)
+	public void add_checkbox(String button_text, String print_out, int x, int y)
 	{
 		JCheckBox box = new JCheckBox(button_text);
 		box.setBounds(x, y, 150, 30);
+		box.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				System.out.println(print_out);
+			}
+		});
 		panel.add(box);
 	}
 
@@ -75,6 +89,11 @@ public class frame extends JFrame
 	{
 		JComboBox<String> box = new JComboBox<String>(button_text);
 		box.setBounds(x, y, 150, 30);
+		box.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				System.out.println(box.getSelectedItem().toString());
+			}
+		});
 		panel.add(box);
 	}
 }
