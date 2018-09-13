@@ -11,23 +11,10 @@ import javax.swing.SwingUtilities;
 
 public class ActionCheckBox extends JCheckBox
 {
-	private int x_loc;
-	private int y_loc;
-	private int x_size;
-	private int y_size;
 
-	public ActionCheckBox()
+	public ActionCheckBox(String text)
 	{
-
-	}
-
-	public void set_dimensions(int x, int y, int sx, int sy)
-	{
-		x_loc = x;
-		y_loc = y;
-		x_size = sx;
-		y_size = sy;
-		this.setBounds(x_loc, y_loc, x_size, y_size);
+		super(text);
 	}
 
 	public void add_single_print(String print)
