@@ -17,7 +17,6 @@ public class Main
 			window.add_combobox(hello_array, 330, (i*40)+10);
 			window.add_switchable_button(hello_array, hello_array[i], 490, (i*40)+10);
 		}
-		// window.add_quit_button();
 		window.setVisible(true);
 	}
 
