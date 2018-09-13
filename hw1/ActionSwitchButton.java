@@ -1,3 +1,9 @@
+/******************************
+* Jeremy Kanovsky
+* jeremy.kanovsky@tufts.edu
+* This class allows the user to make a button that switches its text when pressed.
+******************************/
+
 import java.util.*;
 import java.io.*;
 import java.lang.*;

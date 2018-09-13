@@ -1,3 +1,9 @@
+/******************************
+* Jeremy Kanovsky
+* jeremy.kanovsky@tufts.edu
+* This is the frame class which extends JFrame and implements the other widgets.
+******************************/
+
 import java.util.*;
 import java.io.*;
 import java.lang.*;

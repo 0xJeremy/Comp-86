@@ -1,3 +1,9 @@
+/******************************
+* Jeremy Kanovsky
+* jeremy.kanovsky@tufts.edu
+* This class creates a basic combobox by extending ComboBox and lets the user add a print function.
+******************************/
+
 import java.util.*;
 import java.io.*;
 import java.lang.*;

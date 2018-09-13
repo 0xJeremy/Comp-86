@@ -1,3 +1,9 @@
+/******************************
+* Jeremy Kanovsky
+* jeremy.kanovsky@tufts.edu
+* This class makes a simple checkbox by extending JCheckBox and lets the user add a print function when pressed.
+******************************/
+
 import java.util.*;
 import java.io.*;
 import java.lang.*;

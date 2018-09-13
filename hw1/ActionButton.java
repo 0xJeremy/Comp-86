@@ -1,3 +1,9 @@
+/******************************
+* Jeremy Kanovsky
+* jeremy.kanovsky@tufts.edu
+* This class is a basic action button that extends JButton and allows the user to add a print function.
+******************************/
+
 import java.util.*;
 import java.io.*;
 import java.lang.*;
