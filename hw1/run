@@ -1,0 +1,3 @@
+#!/bin/bash
+javac Main.java frame.java ActionButton.java ActionCheckBox.java ActionComboBox.java ActionSwitchButton.java QuitButton.java
+java Main
