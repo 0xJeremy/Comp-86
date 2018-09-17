@@ -1,7 +1,7 @@
 /******************************
-*
-*
-*
+* Jeremy Kanovsky
+* jeremy.kanovsky@tufts.edu
+* This is the main function for Homework 1. It creates a new window interface.
 ******************************/
 
 import java.util.*;
