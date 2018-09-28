@@ -13,7 +13,8 @@ public class frame extends JFrame
 	{
 		setTitle(window_name);
 		setSize(height, width);
-		setLayout(new GridLayout(3, 1));
+		// setLayout(new GridLayout(3, 2));
+		setLayout(new BorderLayout());
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
@@ -28,21 +29,16 @@ public class frame extends JFrame
 	public void add_canvas()
 	{
 		Canvas canvas = new Canvas();
-		canvas.setPreferredSize(new Dimension(300, 300));
-		add(canvas);
+		canvas.setSize(new Dimension(300, 600));
+		add(canvas, BorderLayout.CENTER);
 	}
 
-	public ActionCheckBox add_checkbox(String button_text, String print_out, int x, int y)
+	public ActionCheckBox add_checkbox(String button_text, String print_out)
 	{
 		ActionCheckBox box = new ActionCheckBox(button_text);
 		box.add_single_print(print_out);
-		box.setBounds(x, y, 150, 30);
+		box.setBounds(1, 1, 150, 30);
 		return box;
-	}
-
-	public void add_JPanel(JPanel panel)
-	{
-		add(panel);
 	}
 
 }

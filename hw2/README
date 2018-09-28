@@ -1,0 +1,22 @@
+The file Main.java contains the main function for this program. The 
+frame.java file handles the actual JFrame object, but allows for the 
+main to add things to it. Canvas.java handles the drawing board of 
+the program, while ActionCheckBox.java and ActionButton.java are 
+extensions of the JButton and JCheckBox, with some slight 
+modification that will make it easier to expand the program in the 
+future.
+
+To be more explicit: frame.java extends the JFrame class. 
+ActionCheckBox extends the default JCheckBox but adds wrapper 
+functions that make it easier for the user to print to console. 
+ActionButton extends the default JButton but adds wrapper functions 
+that make it easier for the user to print to console.
+The main function in Main.java creates and instanciates frame.java 
+and then adds various components to it.
+
+To compile this program, use:
+	javac Main.java frame.java Canvas.java ActionCheckBox.java 
+	ActionButton.java
+
+To run this program, use:
+	java Main

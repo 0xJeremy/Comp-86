@@ -9,27 +9,22 @@ public class Main
 	public static void main(String args[])
 	{
 		frame window = new frame("Comp 86 – Homework 2", 650, 400);
+
 		window.add_canvas();
 
 		JPanel options = new JPanel();
-		String seeIR = "Toggle Infared View";
-		String seeIR2 = "Toggled Infared View";
-		options.add(window.add_checkbox(seeIR, seeIR2, 1, 1));
+		options.add(window.add_checkbox("Toggle Infared View", "Toggled Infared View"));
+		options.add(window.add_checkbox("Toggle Night View", "Toggled Night View"));
+		options.add(window.add_checkbox("Toggle All Sensors", "Toggled All Sensors"));
+		window.add(options, BorderLayout.PAGE_START);
 
-		String seenight = "Toggle Night View";
-		String seenight2 = "Toggled Night View";
-		options.add(window.add_checkbox(seenight, seenight2, 1, 1));
-		window.add_JPanel(options);
+		JPanel extras = new JPanel();
+		extras.add(window.add_print_button("Add Enemy", "Added Enemy"));
+		extras.add(window.add_print_button("Remove Enemy", "Removed Enemy"));
 
-		JPanel buttons = new JPanel();
-		String button = "Add Enemy";
-		String button2 = "Added Enemy";
-		buttons.add(window.add_print_button(button, button2));
-
-		button = "Remove Enemy";
-		button2 = "Removed Enemy";
-		buttons.add(window.add_print_button(button, button2));
-		window.add_JPanel(buttons);
+		JSlider view_distance = new JSlider(JSlider.HORIZONTAL, 10, 100, 10);
+		extras.add(view_distance);
+		window.add(extras, BorderLayout.PAGE_END);
 
 		window.setVisible(true);
 	}

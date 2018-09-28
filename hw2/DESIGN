@@ -1,0 +1,11 @@
+/**********************************
+    Homework 2 Design Doc
+**********************************/
+
+This GUI will be an interface similar to what may be seen on a 
+control panel of a navy ship patrolling for other ships. It will 
+contain a main draw area with a radar scanning for objects, and will 
+be surrounded by buttons and sliders. A slider will be used to zoom 
+and scale the radar. The buttons will illuminate different types of 
+objects surrounding the ship, while checkboxes turn on and off 
+various features of the scanner.

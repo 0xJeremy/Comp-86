@@ -4,8 +4,9 @@ import javax.swing.*;
 
 public class Canvas extends JPanel {
 	public void paintComponent(Graphics g) {
-		g.drawLine(50, 50, 100, 50);
-		g.drawString("I wish I went to Brown", 40, 70);
-		g.drawRect(35, 45, 25, 35);
+		for(int i = 0; i < 60; i++)
+		{
+			g.drawOval(40+i, 40+i, i*10, i*10);
+		}
 	}
 }
