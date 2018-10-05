@@ -1,0 +1,21 @@
+The Main.java file contains the main method for this program. It creates a 
+Frame which is extended in frame.java. The frame has a canvas (Canvas.java), 
+and buttons of various kinds (both default JButtons and ActionButton.java). 
+Additionally it has ActionCheckBox.java and some additional widgets.
+
+When the "Toggle Display" button is pressed initially, a oval is drawn in the 
+display. Subsequent presses cause the oval to move in front or behind the 
+display. This is a mechanic that will be used in the final project.
+
+The concentric circles shown are a work in progress for a "radar" system that 
+will also be used in the final project.
+
+The structure of this program is roughly:
+	- Main.java
+		- frame.java
+			- Canvas.java
+			- ActionButton.java
+			- ActionCheckbox.java
+
+The button callback from the main function is used in the canvas to repaint, 
+and is wrapped by the frame object.
