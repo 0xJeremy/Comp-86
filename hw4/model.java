@@ -9,12 +9,12 @@ public class model
 {
 	private ArrayList<vehicle> vehicles;
 	private Canvas canvas;
-	private bool show_planes = false;
-	private bool show_boats = false;
+	private static boolean show;
 
 	public model()
 	{
 		vehicles = new ArrayList<vehicle>();
+		show = true;
 
 		for(int i = 0; i < 5; i++) {
 			String name = "Boat " + i;
@@ -25,8 +25,6 @@ public class model
 			vehicles.add(plane1);
 		}
 
-
-
 		canvas = new Canvas();
 		canvas.setSize(new Dimension(300, 600));
 	}
@@ -36,20 +34,40 @@ public class model
 		return canvas;
 	}
 
+	public void toggle_view()
+	{
+		canvas.toggle();
+	}
+
+	public void set_background(Color c)
+	{
+		canvas.setBackground(c);
+	}
+
 	public class Canvas extends JPanel{
+
+		private boolean show;
+		private Color background;
+
+		public Canvas()
+		{
+			show = true;
+		}
 
 		public void paintComponent(Graphics g)
 		{
-			// for(int i = 0; i < 60; i++)
-			// {
-			// 	if(i % 2 == 0) {
-			// 		g.setColor(Color.BLACK);
-			// 	}
-			// 	g.drawOval(40+i, 40+i, i*10, i*10);
-			// 	g.setColor(Color.GREEN);
-			// }
-			draw(g);
+			super.paintComponent(g);
+			if(show) {
+				draw(g);
+			}
 		}
+
+		public void toggle()
+		{
+			show = !show;
+			repaint();
+		}
+
 	}
 
 		public void draw(Graphics g)

@@ -15,6 +15,7 @@ public class boat extends vehicle
 
 	public void draw(Graphics g)
 	{
+		g.setColor(Color.BLUE);
 		g.drawRect(position_x, position_y, 40, 40);
 	}
 }

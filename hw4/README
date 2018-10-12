@@ -1,0 +1,19 @@
+The main function for this program is in the Main.java file. In it, a new frame object is created. Frame.java contains the main window and a model object, along with various buttons with functions specific to them. The model object has and maintains a canvas which can be acted upon by the buttons in the frame. It also has specific helper functions associated with it. Additionally, the vehicle class is a general class that serves as the parent for the boat.java and plane.java classes. Using polymorphism, the model object stores all the created vehicles.
+
+A brief flowchart below shows the inheritance structures:
+
+main:
+	- frame:
+		- model:
+			- canvas
+			- vehicles arraylist:
+				- plane
+				- boat
+			- ActionCheckBox
+			- ActionButton
+
+To compile this program, run:
+	javac *.java
+
+To run this program, run:
+	java Main

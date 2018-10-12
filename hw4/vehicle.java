@@ -12,7 +12,7 @@ public class vehicle
 	protected int position_y;
 	protected int speed_x;
 	protected int speed_y;
-	protected int color;
+	protected Color color;
 	protected String name;
 
 	public vehicle(String uname, int pos_x, int pos_y, int v_x, int v_y)
@@ -22,6 +22,11 @@ public class vehicle
 		position_y = pos_y;
 		speed_x = v_x;
 		speed_y = v_y;
+	}
+
+	public void set_color(Color c)
+	{
+		color = c;
 	}
 
 	public void draw(Graphics g)

@@ -17,6 +17,7 @@ public class plane extends vehicle
 
 	public void draw(Graphics g)
 	{
+		g.setColor(Color.WHITE);
 		g.drawOval(position_x, position_y, 40, 40);
 	}
 }
