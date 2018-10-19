@@ -4,8 +4,25 @@
 Jeremy Kanovsky - Comp 86
 Fall 2018
 
+Usage:
+	Compile: javac *.java
+	Run: java Main
+
 Design:
-This program was designed with a similar architecture to the previous programs. It was implemented in a modular way where a single vehicle class serves as the parent for other classes, and where all these objects are stored within a model object which includes a canvas. This program was specifically designed to be expandable in different ways while allowing the user to more closely interact with the widgets.
+This program was designed with a similar architecture to the 
+previous programs. It was implemented in a modular way where a 
+single vehicle class serves as the parent for other classes, and 
+where all these objects are stored within a model object which 
+includes a canvas. This program was specifically designed to be 
+expandable in different ways while allowing the user to more closely 
+interact with the widgets.
+
+Layout:
+The layout of the GUI created in this program automatically adjusts 
+the button and widget layout according to the size of the window. 
+The objects still move off screen however and this was implemented 
+intentionally. The final program design will use this as a feature 
+in simulating part of a "radar" system.
 
 Structure:
 main:
@@ -19,15 +36,37 @@ main:
 			- ActionButton
 
 Uses:
-- Main: Uses a frame to create a new window with which the user can interact.
-- Frame: Creates and maintains a model class object and creates buttons where the user can influence the appearance of the canvas.
-- Model: Creates and maintains a canvas and an ArrayList of objects containing vehicles of different types. Provides functions that the frame may call to influence either the canvas, or the vehicles, or both.
-- Vehicle: Serves as the parent class for both boats and planes (more vehicles to be added later), and provides an easy abstraction to be added in the ArrayList in the model.
+- Main: Uses a frame to create a new window with which the user can 
+interact.
+- Frame: Creates and maintains a model class object and creates 
+buttons where the user can influence the appearance of the canvas.
+- Model: Creates and maintains a canvas and an ArrayList of objects 
+containing vehicles of different types. Provides functions that the 
+frame may call to influence either the canvas, or the vehicles, or 
+both.
+- Vehicle: Serves as the parent class for both boats and planes (
+more vehicles to be added later), and provides an easy abstraction 
+to be added in the ArrayList in the model.
 
 Secrets:
 - Main: Main contains no secrets, and simply creates a Frame object.
-- Frame: Frame contains information about the buttons it contains and the specifics of the window created for the user. It does not share specific information about the variables it contains and instead simply calls functions in other objects.
-- Model: The model hides information about the canvas and the vehicle objects it contains. At no point can other objects directly interact with the vehicles contained in the model or with the canvas model maintains. Instead model has many public functions that act as wrappers for the information within the model object.
-- Vehicle: Vehicle hides information about the specifics of its objects such as the location, speed, and name. It provides functions such as draw() that allow the vehicle to be drawn on a canvas.
-	- Boat: The boat class hides information about its position, speed, and name (and inherits from the Vehicle class). It contains methods specific to itself and hides its variables from all other objects.
-	- Plane: The plane class hides information about its position, speed, and name (and inherits from the Vehicle class). It contains methods specific to itself and hides its variables from all other objects.
+- Frame: Frame contains information about the buttons it contains 
+and the specifics of the window created for the user. It does not 
+share specific information about the variables it contains and 
+instead simply calls functions in other objects.
+- Model: The model hides information about the canvas and the 
+vehicle objects it contains. At no point can other objects directly 
+interact with the vehicles contained in the model or with the canvas 
+model maintains. Instead model has many public functions that act as 
+wrappers for the information within the model object.
+- Vehicle: Vehicle hides information about the specifics of its 
+objects such as the location, speed, and name. It provides functions 
+such as draw() that allow the vehicle to be drawn on a canvas.
+	- Boat: The boat class hides information about its position, 
+	speed, and name (and inherits from the Vehicle class). It 
+	contains methods specific to itself and hides its variables from 
+	all other objects.
+	- Plane: The plane class hides information about its position, 
+	speed, and name (and inherits from the Vehicle class). It 
+	contains methods specific to itself and hides its variables from 
+	all other objects.

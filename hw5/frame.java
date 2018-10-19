@@ -1,3 +1,11 @@
+/***********************************************
+Jeremy Kanovsky
+Class: Frame
+Does: Creates and maintains the window for the 
+program. It is called once from main and manages
+all the widgets of the program.
+***********************************************/
+
 import java.util.*;
 import java.io.*;
 import java.lang.*;
@@ -56,6 +64,7 @@ public class frame extends JFrame
 		fire_button.setEnabled(fire_button_flag);
 		fire_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
+				canvas.remove_enemy();
 				System.out.println("Now firing on enemies!");
 			}
 		});
@@ -88,6 +97,7 @@ public class frame extends JFrame
 		});
 		extras.add(add_values_box);
 
+		// THIS CODE TO BE USED LATER IN PROJECT
 		// JButton add_plane = new JButton("Add Plane");
 		// add_plane.addActionListener(new ActionListener() {
 		// 	public void actionPerformed(ActionEvent event) {

@@ -1,3 +1,11 @@
+/***********************************************
+Jeremy Kanovsky
+Class: vehicle
+Does: Serves as the parent class for boat and 
+plane. Provides a default constructor used by
+the child classes and some basic default methods.
+***********************************************/
+
 import java.util.*;
 import java.io.*;
 import java.lang.*;

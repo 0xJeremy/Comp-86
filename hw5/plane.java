@@ -1,3 +1,11 @@
+/***********************************************
+Jeremy Kanovsky
+Class: plane
+Does: Extends the vehicle class and creates a
+plane object. This object is capable of maintaining
+its own location and drawing itself on the canvas.
+***********************************************/
+
 import java.util.*;
 import java.io.*;
 import java.lang.*;
@@ -9,14 +17,12 @@ public class plane extends vehicle
 {
 	private int altitude;
 	private boolean flag;
-	// private boolean moving;
 
 	public plane(String uname, int pos_x, int pos_y, int v_x, int v_y, int height)
 	{
 		super(uname, pos_x, pos_y, v_x, v_y);
 		flag = true;
 		altitude = height;
-		// moving = true;
 	}
 
 	public void draw(Graphics g, boolean moving)

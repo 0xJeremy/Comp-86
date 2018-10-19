@@ -1,3 +1,12 @@
+/***********************************************
+Jeremy Kanovsky
+Class: model
+Does: Creates and maintains the canvas class as
+well as managing the vehicles objects ArrayList.
+Contains wrapper functions for the canvas and vehicles
+to be called from frame.
+***********************************************/
+
 import java.io.*;
 import java.lang.*;
 import java.awt.*;
@@ -52,6 +61,11 @@ public class model
     {
     	boat boat1 = new boat("Added Boat", 10, 10, speed, speed);
 		vehicles.add(boat1);
+    }
+
+    public void remove_enemy()
+    {
+    	vehicles.remove(vehicles.size() - 1);
     }
 
 	public Canvas get_canvas()
