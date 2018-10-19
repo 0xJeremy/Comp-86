@@ -7,6 +7,7 @@ import java.awt.event.*;
 
 public class frame extends JFrame
 {
+	boolean fire_button_flag;
 
 	public frame(String window_name, int height, int width)
 	{
@@ -48,17 +49,67 @@ public class frame extends JFrame
 				canvas.toggle_view();
 			}
 		});
-
 		extras.add(button);
-		extras.add(add_print_button("Fire On Enemies", "Now Firing!"));
 
-		JSlider view_distance = new JSlider(JSlider.HORIZONTAL, 10, 100, 10);
-		extras.add(view_distance);
+		JButton fire_button = new JButton("Fire On Enemies");
+		this.fire_button_flag = false;
+		fire_button.setEnabled(fire_button_flag);
+		fire_button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				System.out.println("Now firing on enemies!");
+			}
+		});
+		extras.add(fire_button);
+
+		String[] add_values = new String[] {"Add Plane (Speed 5)", 
+					"Add Plane (Speed 10)", "Add Boat (Speed 5)", 
+					"Add Boat (Speed 10)"};
+		JComboBox<String> add_values_box = new JComboBox<String>(add_values);
+		add_values_box.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				String selected_object = (String)add_values_box.getSelectedItem();
+				if(selected_object.equals("Add Plane (Speed 5)")) {
+					canvas.add_plane(5);
+					System.out.println("New Plane with Speed 5 Added!");
+				}
+				else if(selected_object.equals("Add Plane (Speed 10)")) {
+					canvas.add_plane(10);
+					System.out.println("New Plane with Speed 10 Added!");
+				}
+				else if(selected_object.equals("Add Boat (Speed 5)")) {
+					canvas.add_boat(5);
+					System.out.println("New Boat with Speed 5 Added!");
+				}
+				else if(selected_object.equals("Add Boat (Speed 10)")) {
+					canvas.add_plane(10);
+					System.out.println("New Boat with Speed 10 Added!");
+				}
+			}
+		});
+		extras.add(add_values_box);
+
+		// JButton add_plane = new JButton("Add Plane");
+		// add_plane.addActionListener(new ActionListener() {
+		// 	public void actionPerformed(ActionEvent event) {
+		// 		canvas.add_plane();
+		// 	}
+		// });
+		// extras.add(add_plane);
+
+		// JButton add_boat = new JButton("Add Boat");
+		// add_boat.addActionListener(new ActionListener() {
+		// 	public void actionPerformed(ActionEvent event) {
+		// 		canvas.add_boat();
+		// 	}
+		// });
+		// extras.add(add_boat);
 
 		JButton toggle_movement = new JButton("Toggle Movement");
 		toggle_movement.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				canvas.toggle_movement();
+				fire_button_flag = !fire_button_flag;
+				fire_button.setEnabled(fire_button_flag);
 			}
 		});
 		extras.add(toggle_movement);

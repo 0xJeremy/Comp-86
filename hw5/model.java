@@ -42,6 +42,18 @@ public class model
             }
         };
 
+    public void add_plane(int speed)
+    {
+    	plane plane1 = new plane("Added Plane", 60, 60, speed, speed, speed);
+    	vehicles.add(plane1);
+    }
+
+    public void add_boat(int speed)
+    {
+    	boat boat1 = new boat("Added Boat", 10, 10, speed, speed);
+		vehicles.add(boat1);
+    }
+
 	public Canvas get_canvas()
 	{
 		return canvas;
