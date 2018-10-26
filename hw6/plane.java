@@ -65,6 +65,7 @@ public class plane extends vehicle
 			&& y > position_y && y < (position_y + 40))
 		{
 			selected = true;
+			System.out.println("Vehicle Selected at " + x + ", " + y);
 		}
 		else {
 			selected = false;

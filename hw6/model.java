@@ -118,7 +118,7 @@ public class model
 	{
 		for(int i = 0; i < vehicles.size(); i++)
 		{
-			for(int j = i; j < vehicles.size(); j++)
+			for(int j = i+1; j < vehicles.size(); j++)
 			{
 				// if(vehicles.get(i).posx() >= vehicles.get(j).posx()
 				// 	&& vehicles.get(i).posx() <= vehicles.get(j).posx() + 40)
@@ -129,11 +129,12 @@ public class model
 				// 		vehicles.remove(i);
 				// 	}
 				// }
-				// if(vehicles.get(i).posx() == vehicles.get(j).posx()
-				// 	&& vehicles.get(i).posy() == vehicles.get(j).posy())
-				// {
-				// 	vehicles.remove(i);
-				// }
+				if(vehicles.get(i).posx() == vehicles.get(j).posx()
+					&& vehicles.get(i).posy() == vehicles.get(j).posy())
+				{
+					System.out.println("Vehicle Collision!\n\tVehicle Removed.");
+					vehicles.remove(i);
+				}
 			}
 		}
 	}
@@ -175,7 +176,6 @@ public class model
 		public void mouseClicked(MouseEvent e)
 		{
 			mouse_click(e.getX(), e.getY());
-			System.out.println("X is: " + e.getX() + " Y is: " + e.getY());
 			repaint();
 		}
 
