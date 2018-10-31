@@ -106,6 +106,14 @@ public class model
 		return frame;
 	}
 
+	public void zoom()
+	{
+		for(int i = 0; i < vehicles.size(); i++)
+		{
+			vehicles.get(i).toggle_zoom();
+		}
+	}
+
 	public void mouse_click(int x, int y)
 	{
 		for(int i = 0; i < vehicles.size(); i++)

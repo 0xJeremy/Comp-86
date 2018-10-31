@@ -17,20 +17,28 @@ public class boat extends vehicle
 {
 	private boolean flag;
 	private boolean selected;
+	private boolean zoom;
 
 	public boat(String uname, int pos_x, int pos_y, int v_x, int v_y)
 	{
 		super(uname, pos_x, pos_y, v_x, v_y);
 		flag = true;
 		selected = false;
+		zoom = false;
 	}
 
 	public void draw(Graphics g, boolean moving)
 	{
 		g.setColor(Color.BLUE);
+		int modifier = 40;
+		int edge_pos = 400;
+		if(zoom) {
+			modifier = 80;
+			edge_pos = 800;
+		}
 		if(moving)
 		{
-			if(position_x > 400 || position_y > 400)
+			if(position_x > edge_pos || position_y > edge_pos)
 			{
 				flag = false;
 			}
@@ -50,10 +58,10 @@ public class boat extends vehicle
 			}
 		}
 		if(selected) {
-			g.fillRect(position_x, position_y, 40, 40);
+			g.fillRect(position_x, position_y, modifier, modifier);
 		}
 		else {
-			g.drawRect(position_x, position_y, 40, 40);
+			g.drawRect(position_x, position_y, modifier, modifier);
 		}
 	}
 
@@ -80,5 +88,22 @@ public class boat extends vehicle
 	public int posy()
 	{
 		return position_y;
+	}
+
+	public void toggle_zoom()
+	{
+		zoom = !zoom;
+		if(zoom) {
+			position_x *= 2;
+			position_y *= 2;
+			speed_x *= 2;
+			speed_y *= 2;
+		}
+		else {
+			position_x /= 2;
+			position_y /= 2;
+			speed_x /= 2;
+			speed_y /= 2;
+		}
 	}
 }

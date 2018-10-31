@@ -66,6 +66,8 @@ public class plane extends vehicle
 		{
 			selected = true;
 			System.out.println("Vehicle Selected at " + x + ", " + y);
+			speed_x = 0;
+			speed_y = 0;
 		}
 		else {
 			selected = false;
