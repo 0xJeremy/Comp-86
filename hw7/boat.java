@@ -33,7 +33,6 @@ public class boat extends vehicle
 		int modifier = 40;
 		int edge_pos = 400;
 		if(zoom) {
-			modifier = 80;
 			edge_pos = 800;
 		}
 		if(moving)

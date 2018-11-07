@@ -22,7 +22,10 @@ of the simulation. When objects collide on the canvas, one of them
 will be destroyed and the user is unable to gain points for that
 object. A state panel on the right side of the window was also
 implemented to give the user information about the state of the
-game.
+game. This program now also supports the ability to zoom in and 
+out on the "radar" in the center of the window. This changes
+the position of objects on the screen and changes which drawings
+are visible to the user.
 
 Layout:
 The layout of the GUI created in this program automatically adjusts 
