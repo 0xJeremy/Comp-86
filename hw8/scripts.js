@@ -5,6 +5,7 @@ class enemy {
 		this.posx = x;
 		this.posy = y;
 		this.vehicle = type;
+		this.flag = true;
 	}
 
 	draw() {
@@ -17,6 +18,24 @@ class enemy {
 		else if(this.vehicle == "boat") {
 			c.fillStyle = "orange";
 			c.fillRect(this.posx, this.posy, this.posx+25, this.posy+25);
+		}
+	}
+
+	update() {
+		if(this.flag) {
+			this.posx = this.posx + this.speedx;
+			this.posy = this.posy + this.speedy;
+		}
+		else {
+			this.posx = this.posx - this.speedx;
+			this.posy = this.posy - this.speedy;
+		}
+		if(this.posx + 25 > window.innerWidth*0.95
+			|| this.posy + 25 > window.innerHeight*0.9) {
+			this.flag = false;
+		}
+		if(this.posx < 0 || this.posy < 0) {
+			this.flag = true;
 		}
 	}
 
@@ -36,7 +55,7 @@ function fire() {
 	draw();
 }
 function freeze() {
-
+	move_flag = !move_flag;
 }
 
 function nuke() {
@@ -58,3 +77,16 @@ function draw() {
 
 var enemies = [];
 draw();
+var move_flag = true;
+
+function animate() {
+	if(move_flag) {
+		for(i = 0; i < enemies.length; i++) {
+		enemies[i].update();
+		}
+	}
+	draw();
+	window.requestAnimationFrame(animate);
+}
+
+window.requestAnimationFrame(animate);
