@@ -1,7 +1,7 @@
 class enemy {
 	constructor(type, x, y) {
-		this.speedx = 5;
-		this.speedy = 5;
+		this.speedx = 3;
+		this.speedy = 3;
 		this.posx = x;
 		this.posy = y;
 		this.vehicle = type;
@@ -9,15 +9,13 @@ class enemy {
 	}
 
 	draw() {
-		var canvas = document.getElementById("myCanvas");
-		var c = canvas.getContext("2d");
 		if(this.vehicle == "plane") {
 			c.fillStyle = "blue";
-			c.fillRect(this.posx, this.posy, this.posx+25, this.posy+25);
+			c.fillRect(this.posx, this.posy, 25, 25);
 		}
 		else if(this.vehicle == "boat") {
 			c.fillStyle = "orange";
-			c.fillRect(this.posx, this.posy, this.posx+25, this.posy+25);
+			c.fillRect(this.posx, this.posy, 25, 25);
 		}
 	}
 
@@ -30,8 +28,8 @@ class enemy {
 			this.posx = this.posx - this.speedx;
 			this.posy = this.posy - this.speedy;
 		}
-		if(this.posx + 25 > window.innerWidth*0.95
-			|| this.posy + 25 > window.innerHeight*0.9) {
+		if(this.posx + 25 > canvas.width
+			|| this.posy + 25 > canvas.height) {
 			this.flag = false;
 		}
 		if(this.posx < 0 || this.posy < 0) {
@@ -64,10 +62,6 @@ function nuke() {
 }
 
 function draw() {
-	var canvas = document.getElementById("myCanvas");
-	var c = canvas.getContext("2d");
-	canvas.width = window.innerWidth*0.95;
-	canvas.height = window.innerHeight*0.90;
 	c.fillStyle = "gray";
 	c.fillRect(0, 0, canvas.width, canvas.height);
 	for(i = 0; i < enemies.length; i++) {
@@ -75,6 +69,8 @@ function draw() {
 	}
 }
 
+var canvas = document.getElementById("myCanvas");
+var c = canvas.getContext("2d");
 var enemies = [];
 draw();
 var move_flag = true;

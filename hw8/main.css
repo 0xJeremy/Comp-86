@@ -1,10 +1,31 @@
+.center {
+	margin: auto;
+	width: 50%;
+}
+
 button {
 	border: none;
 	color: white;
-	padding: 15px 32px;
+	padding: 1em 2em;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
-	border-radius: 10px;
+	border-radius: 6px;
+	box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2), 0 6px 16px 0 rgba(0,0,0,0.19);
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
+	margin-bottom: 1em;
+}
+
+button:hover {
+	background-color: white !important;
+	color: black;
+}
+
+canvas {
+    display: block;
+    margin: 0 auto;
+    width: 95%;
+    height: 95%;
 }
