@@ -28,7 +28,6 @@ window.onload = function () {
 function animate() { 
 	requestAnimationFrame( animate ); 
 	update();
-	scene.tick()
 	controls.update();
 }
 
@@ -54,23 +53,22 @@ function update()
 	}
 
 	var position = new THREE.Vector3();
-	position.setFromMatrixPosition()( sphere.matrixWorld );
-	if(position.x == 10) {
+	position.setFromMatrixPosition(sphere.matrixWorld);
+	if(position.x >= 10) {
 		sphere_flag = false;
 	}
-	else if(position.x == -10) {
+	else if(position.x <= -10) {
 		sphere_flag = true;
 	}
 	if(sphere_flag) {
-		sphere.position.set(position.x+1, position.y, position.z);
+		sphere.translateX(0.1);
 	}
 	else {
-		sphere.position.set(position.x-1, position.y, position.z);
+		sphere.translateX(-0.1);
 	}
 
 	
 	controls.update();
-	animate();
 }
 
 
