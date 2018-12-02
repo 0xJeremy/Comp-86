@@ -3,6 +3,7 @@ var mouse = { x: 0, y: 0 };
 var keyboard = new THREEx.KeyboardState();
 cube_counter = 0;
 sphere_flag = true;
+sphere_counter = 0;
 
 window.onload = function () {
 	renderer = new THREE.WebGLRenderer( { antialias: true } );
@@ -28,8 +29,10 @@ window.onload = function () {
 function animate() { 
 	requestAnimationFrame( animate ); 
 	update();
+	render();
 	controls.update();
 }
+
 
 function update()
 {
@@ -52,19 +55,23 @@ function update()
 		}
 	}
 
-	var position = new THREE.Vector3();
-	position.setFromMatrixPosition(sphere.matrixWorld);
-	if(position.x >= 10) {
-		sphere_flag = false;
-	}
-	else if(position.x <= -10) {
-		sphere_flag = true;
-	}
-	if(sphere_flag) {
-		sphere.translateX(0.1);
-	}
-	else {
-		sphere.translateX(-0.1);
+	for(var i = 0; i < sphere_counter; i++) {
+		var position = new THREE.Vector3();
+		var sphere_name = "sphere" + i;
+		var sphere = scene.getObjectByName(sphere_name);
+		position.setFromMatrixPosition(sphere.matrixWorld);
+		if(position.x >= 10) {
+			sphere_flag = false;
+		}
+		else if(position.x <= -10) {
+			sphere_flag = true;
+		}
+		if(sphere_flag) {
+			sphere.translateX(0.1);
+		}
+		else {
+			sphere.translateX(-0.1);
+		}
 	}
 
 	
@@ -93,8 +100,13 @@ function makeSceneGraph () {
 	var skyBox = new THREE.Mesh( skyBoxGeometry, skyBoxMaterial );
 	scene.add(skyBox);
 
-	var sphereGeometry = new THREE.SphereGeometry(1);
-	var sphereMaterial = new THREE.MeshBasicMaterial( { color: 0x562212 } );
-	sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
-	scene.add(sphere);
+	for(var i = 0; i < 5; i++) {
+		var sphereGeometry = new THREE.SphereGeometry(1);
+		var sphereMaterial = new THREE.MeshBasicMaterial( { color: 0x864212 } );
+		sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
+		sphere.position.set(1, i*2, 2);
+		scene.add(sphere);
+		sphere.name = "sphere" + sphere_counter;
+		sphere_counter++;
+	}
 }
