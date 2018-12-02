@@ -20,6 +20,8 @@ window.onload = function () {
 	controls = new THREE.OrbitControls( camera, renderer.domElement );
 	controls.addEventListener( 'change', render );
 
+	lights = new Lights();
+
 	makeSceneGraph()
 
 	render()
@@ -30,7 +32,14 @@ function animate() {
 	requestAnimationFrame( animate ); 
 	update();
 	render();
+	text_updater();
 	controls.update();
+}
+
+function text_updater() {
+	var fieldNameElement = document.getElementById("info");
+	fieldNameElement.textContent = "The number of enemy ships is: " + (cube_counter + sphere_counter) +
+									". There are " + cube_counter + " boats and " + sphere_counter + " planes.";
 }
 
 
@@ -64,15 +73,33 @@ function update()
 		scene.add(cube);
 		cube_counter++;
 	}
+	else if(keyboard.pressed("v"))
+	{
+		if(cube_counter > 0) {
+			var cube_name = "cube" + cube_counter;
+			var cube = scene.getObjectByName(cube_name);
+			scene.remove(cube);
+			cube_counter--;
+		}
+	}
 	else if(keyboard.pressed("p"))
 	{
 		var sphereGeometry = new THREE.SphereGeometry(1);
 		var sphereMaterial = new THREE.MeshBasicMaterial( { color: 0x864212 } );
 		sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
-		sphere.position.set(1+cube_counter, cube_counter*2, -2);
+		sphere.position.set(1+sphere_counter, sphere_counter*2, -2);
 		scene.add(sphere);
 		sphere.name = "sphere" + sphere_counter;
 		sphere_counter++;
+	}
+	else if(keyboard.pressed("l"))
+	{
+		if(sphere_counter > 0) {
+			var sphere_name = "sphere" + sphere_counter;
+			var sphere = scene.getObjectByName(sphere_name);
+			scene.remove(sphere);
+			sphere_counter--;
+		} 
 	}
 
 	for(var i = 0; i < sphere_counter; i++) {
@@ -80,10 +107,10 @@ function update()
 		var sphere_name = "sphere" + i;
 		var sphere = scene.getObjectByName(sphere_name);
 		position.setFromMatrixPosition(sphere.matrixWorld);
-		if(position.x >= 10) {
+		if(position.x >= 15) {
 			sphere_flag = false;
 		}
-		else if(position.x <= -10) {
+		else if(position.x <= -15) {
 			sphere_flag = true;
 		}
 		if(sphere_flag) {
@@ -130,7 +157,48 @@ function makeSceneGraph () {
 		sphere_counter++;
 	}
 
-	// display_text = new THREE.TextGeometry("Welcome to Thermonuclear War!");
-	// display_text.position.set(0, 0, 0);
-	// scene.add(display_text);
+	var pyramid = new Pyramid (new THREE.MeshPhongMaterial ({
+		color: "green", shininess: 60 }))
+	pyramid.position.set (0, 0, -6)
+	pyramid.rotation.set (0, 45 * Math.PI/180, 0)
+	scene.add(pyramid)
+}
+
+class Pyramid extends THREE.Object3D {
+    constructor (material) {
+	super ()
+	var bot = new THREE.Mesh (
+		new THREE.BoxGeometry (3, 3, 3),
+		material)
+	bot.position.set (0, -3/2, 0)
+	this.add (bot)
+	var mid = new THREE.Mesh (
+		new THREE.BoxGeometry (2, 2, 2),
+		material)
+	mid.position.set (0, 2/2, 0)
+	this.add (mid)
+	var top = new THREE.Mesh (
+		new THREE.BoxGeometry (1, 1, 1),
+		material)
+	top.position.set (0, 2 + 1/2, 0)
+	this.add(top)
+    }
+}
+
+class Lights {
+    constructor () {
+		this.mainLight = new THREE.DirectionalLight ("white", 1);
+		this.mainLight.position.set (1, 0.5, 1);
+		scene.add (this.mainLight);
+		this.fillLight = new THREE.DirectionalLight ("white", 0.5);
+		this.fillLight.position.set (-1, 0, 1 );
+		scene.add (this.fillLight);
+		this.ambientLight = new THREE.AmbientLight (0x404040);
+		scene.add (this.ambientLight);
+    }
+
+    pressed (state, light) {
+		light.visible = state
+		render ()
+    }
 }
