@@ -1,0 +1,21 @@
+/***********************************************
+              README - Homework 10
+***********************************************/
+
+This homework was completed fully to the specification. A custom object was
+created to simulate an enemy "base" as it might appear on a radar. Two V shaped
+formations of planes and boats were also created as they might appear on a
+radar. Information at the top gives the user information as to how they
+might manipulate the simulation. The user is able to move the formation
+of blocks manually using wasd, and can create new cubes and sphers. The base
+is fixed and the user is unable to interact with it.
+
+Global variables in this program were limited to those required to keep the
+scene updated. Several counter variables were created to help keep track of the
+number and location of different objects. Keyboard controls were implemented
+so as to listen in real time.
+
+The only object to inheret from another is the "tower" object which inherits
+from THREE.Object3D. The rest of the objects were made to be similar to how
+they appeared in the orignal homeworks, and therefore did not require custom
+shapes.
