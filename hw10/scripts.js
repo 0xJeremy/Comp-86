@@ -14,7 +14,7 @@ window.onload = function () {
 	scene = new THREE.Scene();
 
 	camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 1000 );
-	camera.position.set(0, 0, 5); 
+	camera.position.set(0, 0, 15); 
 	scene.add(camera);
 
 	controls = new THREE.OrbitControls( camera, renderer.domElement );
@@ -53,6 +53,26 @@ function update()
 			cube.material.color.setHex(0x000088);
 			cube.position.set(i, i, i);
 		}
+	}
+	else if(keyboard.pressed("c"))
+	{
+		var cubeGeometry = new THREE.CubeGeometry( 1, 1, 1 );
+		var cubeMaterial = new THREE.MeshBasicMaterial( { color: 0x000088 } );
+		var cube = new THREE.Mesh( cubeGeometry, cubeMaterial );
+		cube.name = "cube" + cube_counter;
+		cube.position.set(cube_counter, cube_counter, cube_counter);
+		scene.add(cube);
+		cube_counter++;
+	}
+	else if(keyboard.pressed("p"))
+	{
+		var sphereGeometry = new THREE.SphereGeometry(1);
+		var sphereMaterial = new THREE.MeshBasicMaterial( { color: 0x864212 } );
+		sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
+		sphere.position.set(1+cube_counter, cube_counter*2, -2);
+		scene.add(sphere);
+		sphere.name = "sphere" + sphere_counter;
+		sphere_counter++;
 	}
 
 	for(var i = 0; i < sphere_counter; i++) {
@@ -104,9 +124,13 @@ function makeSceneGraph () {
 		var sphereGeometry = new THREE.SphereGeometry(1);
 		var sphereMaterial = new THREE.MeshBasicMaterial( { color: 0x864212 } );
 		sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
-		sphere.position.set(1, i*2, 2);
+		sphere.position.set(1+i, i*2, -2);
 		scene.add(sphere);
 		sphere.name = "sphere" + sphere_counter;
 		sphere_counter++;
 	}
+
+	// display_text = new THREE.TextGeometry("Welcome to Thermonuclear War!");
+	// display_text.position.set(0, 0, 0);
+	// scene.add(display_text);
 }
