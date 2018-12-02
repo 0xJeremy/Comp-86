@@ -1,9 +1,15 @@
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 class enemy {
 	constructor(type, x, y) {
-		this.speedx = 3;
-		this.speedy = 3;
-		this.posx = x;
-		this.posy = y;
+		this.speedx = getRandomInt(1, 5);
+		this.speedy = getRandomInt(1, 5);
+		this.sizex = getRandomInt(10, 40);
+		this.sizey = this.sizex;
+		this.posx = getRandomInt(0, canvas.width-this.sizex);
+		this.posy = getRandomInt(0, canvas.height-this.sizey);
 		this.vehicle = type;
 		this.flag = true;
 	}
@@ -11,11 +17,11 @@ class enemy {
 	draw() {
 		if(this.vehicle == "plane") {
 			c.fillStyle = "blue";
-			c.fillRect(this.posx, this.posy, 25, 25);
+			c.fillRect(this.posx, this.posy, this.sizex, this.sizey);
 		}
 		else if(this.vehicle == "boat") {
 			c.fillStyle = "orange";
-			c.fillRect(this.posx, this.posy, 25, 25);
+			c.fillRect(this.posx, this.posy, this.sizex, this.sizey);
 		}
 	}
 
@@ -28,8 +34,8 @@ class enemy {
 			this.posx = this.posx - this.speedx;
 			this.posy = this.posy - this.speedy;
 		}
-		if(this.posx + 25 > canvas.width
-			|| this.posy + 25 > canvas.height) {
+		if(this.posx + this.sizex > canvas.width
+			|| this.posy + this.sizey > canvas.height) {
 			this.flag = false;
 		}
 		if(this.posx < 0 || this.posy < 0) {
@@ -61,6 +67,16 @@ function nuke() {
 	draw();
 }
 
+function animate() {
+	if(move_flag) {
+		for(i = 0; i < enemies.length; i++) {
+		enemies[i].update();
+		}
+	}
+	draw();
+	window.requestAnimationFrame(animate);
+}
+
 function draw() {
 	c.fillStyle = "gray";
 	c.fillRect(0, 0, canvas.width, canvas.height);
@@ -74,15 +90,4 @@ var c = canvas.getContext("2d");
 var enemies = [];
 draw();
 var move_flag = true;
-
-function animate() {
-	if(move_flag) {
-		for(i = 0; i < enemies.length; i++) {
-		enemies[i].update();
-		}
-	}
-	draw();
-	window.requestAnimationFrame(animate);
-}
-
 window.requestAnimationFrame(animate);

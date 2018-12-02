@@ -1,0 +1,24 @@
+Assignment 9 will be completed by Jeremy Kanovsky and Ryan Sheehan.
+
+We will be making a staring contest judge. To do this, we will make use of the 
+webcam is users laptop and use image recognition javascript frameworks to 
+detect the two users faces and determine when they blink. Specifically, we 
+will use Webgazer.js, tracking.js, and the Google Voice API. The google voice 
+api will be used to enable voice controls on our website.
+
+Examples of some of the code we will use in our project can be found at 
+https://github.com/0xJeremy/Comp-86-Final-Project
+This is a low level test of the frameworks and APIs that will be implemented 
+into our project.
+
+The use of the interfaces will be fairly straighforward. We will use 
+tracking.js to identify the two heads of the users, and then create two 
+instances of the Webgazer.js framework to identify two sets of eyes. We will 
+continue to track these heads/eyes until one player blinks at which point we 
+will inform the users as to the winner of the staring contest. New games can 
+be started by voice controls so both players can continue to stare at the 
+screen without looking down at the mouse while playing.
+
+A link to the presentation given in class can be found here: 
+https://docs.google.com/presentation/
+d/1NEO6fvymVQ-cHs4FhMD5cTxOAnIoiCbzObSb4r7jRrU/edit?usp=sharing
